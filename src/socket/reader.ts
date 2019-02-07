@@ -49,12 +49,16 @@ export class WebSocketMessageReader extends AbstractMessageReader {
         }
     }
 
-    protected readMessage(message: any): void {
+    protected async readMessage(message: any): Promise<void> {
         if (this.state === 'initial') {
             this.events.splice(0, 0, { message });
         } else if (this.state === 'listening') {
             const data = JSON.parse(message);
-            this.callback!(data);
+            try {
+                await this.callback!(data);
+            } catch (e) {
+                this.fireError(e);
+            }
         }
     }
 

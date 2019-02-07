@@ -1,3 +1,5 @@
+> This project implements the `WebSocketMessageReader#readMessage` with Promises. See https://github.com/theia-ide/theia/issues/4152.
+
 # VSCode WebSocket JSON RPC
 NPM module to implement communication between a jsonrpc client and server over WebSocket.
 
